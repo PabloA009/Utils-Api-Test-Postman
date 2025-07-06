@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { createTheme } from '@mui/material/styles';
-import DescriptionIcon from '@mui/icons-material/Description';
+import FormatListNumberedRtlIcon from '@mui/icons-material/FormatListNumberedRtl';
+import FactCheckOutlinedIcon from '@mui/icons-material/FactCheckOutlined';
 import { AppProvider } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
-import { DemoProvider, useDemoRouter } from '@toolpad/core/internal';
+import { useDemoRouter } from '@toolpad/core/internal';
+import { Schema } from './Pages/Schema';
+import { Home } from './Pages/Home';
 
 const demoTheme = createTheme({
   cssVariables: {
@@ -24,28 +27,28 @@ const demoTheme = createTheme({
   },
 });
 
-function DemoPageContent({ pathname }) {
-  return (
-    <Box
-      sx={{
-        py: 4,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        textAlign: 'center',
-      }}
-    >
-      <Typography>Dashboard content for {pathname}</Typography>
-    </Box>
-  );
-}
+// function DemoPageContent({ pathname }) {
+//   return (
+//     <Box
+//       sx={{
+//         py: 4,
+//         display: 'flex',
+//         flexDirection: 'column',
+//         alignItems: 'center',
+//         textAlign: 'center',
+//       }}
+//     >
+//       <Typography>Dashboard content for {pathname}</Typography>
+//     </Box>
+//   );
+// }
 
-DemoPageContent.propTypes = {
-  pathname: PropTypes.string.isRequired,
-};
+// DemoPageContent.propTypes = {
+//   pathname: PropTypes.string.isRequired,
+// };
 
 export const App = () => {
-  const router = useDemoRouter('/home');
+  const router = useDemoRouter('/');
 
   React.useEffect(() => {
     // Busca el elemento del título y reemplaza su texto
@@ -63,19 +66,20 @@ export const App = () => {
         {
           segment: 'Schema',
           title: 'Schema',
-          icon: <DescriptionIcon />,
+          icon: <FactCheckOutlinedIcon />,
         },
         {
           segment: 'Values',
           title: 'Values',
-          icon: <DescriptionIcon />,
+          icon: <FormatListNumberedRtlIcon />,
         },
       ]}
       router={router}
       theme={demoTheme}
     >
       <DashboardLayout>
-        <DemoPageContent pathname={router.pathname} />
+        {router.pathname === '/' && <Home />}
+        {router.pathname === '/Schema' && <Schema />}
       </DashboardLayout>
     </AppProvider>
   );
