@@ -3,17 +3,19 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
-import TextField from '@mui/material/TextField';
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: '#fff',
+  backgroundColor: theme.palette.background.paper,
   ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: (theme.vars ?? theme).palette.text.secondary,
-  ...theme.applyStyles('dark', {
-    backgroundColor: '#1A2027',
-  }),
+  padding: theme.spacing(2),
+  textAlign: 'left',
+  color: theme.palette.text.primary,
+  fontFamily: 'monospace',
+  fontSize: 14,
+  whiteSpace: 'pre-wrap',
+  wordBreak: 'break-all',
+  borderRadius: 8,
+  boxShadow: theme.shadows[1],
 }));
 
 export const Home = () => {
@@ -55,7 +57,7 @@ export const Home = () => {
       </Box>
       <Box
         sx={{
-          px: 18,
+          px: { xs: 2, md: 18 },
           display: 'flex',
           flexDirection: 'column',
           textAlign: 'justify',
@@ -72,81 +74,65 @@ export const Home = () => {
         <Box sx={{ width: '100%', py: 2 }}>
           <Grid
             container
-            columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+            spacing={2}
             justifyContent="center"
             alignItems="flex-start"
           >
-            <Grid size={4}>
+            <Grid item xs={12} md={6}>
               <Item>
-                <TextField
-                  id="standard-multiline-static"
-                  label="Ejemplo de request"
-                  multiline
-                  rows={8}
-                  defaultValue={`{
-    "campo1": "hola",
-    "campo2": 2,
-    "campo3": {
-        "subcampo1": true,
-        "subcampo2": 5.5
-    }
-}`}
-                  variant="standard"
-                  disabled
-                  fullWidth
-                  InputProps={{
-                    sx: {
-                      fontFamily: 'monospace',
-                      borderRadius: 1,
-                      px: 1,
-                      py: 1,
-                      fontSize: 14,
-                    },
-                    disableUnderline: true,
+                <Typography
+                  variant="subtitle2"
+                  sx={{
+                    mb: 1,
+                    fontWeight: 'bold',
+                    color: 'primary.main',
+                    letterSpacing: 1,
                   }}
-                />
+                >
+                  Ejemplo de request
+                </Typography>
+                {`{
+  "campo1": "hola",
+  "campo2": 2,
+  "campo3": {
+      "subcampo1": true,
+      "subcampo2": 5.5
+  }
+}`}
               </Item>
             </Grid>
-            <Grid size={4}>
+            <Grid item xs={12} md={6}>
               <Item>
-                <TextField
-                  id="standard-multiline-static"
-                  label="Forma de ingresar"
-                  multiline
-                  rows={8}
-                  defaultValue={`{
-    "campo1": "string",
-    "campo2": "integer",
-    "campo3": {
-        "subcampo1": "boolean",
-        "subcampo2": "float"
-    }
-}`}
-                  variant="standard"
-                  disabled
-                  fullWidth
-                  InputProps={{
-                    sx: {
-                      fontFamily: 'monospace',
-                      borderRadius: 1,
-                      px: 1,
-                      py: 1,
-                      fontSize: 14,
-                    },
-                    disableUnderline: true,
+                <Typography
+                  variant="subtitle2"
+                  sx={{
+                    mb: 1,
+                    fontWeight: 'bold',
+                    color: 'primary.main',
+                    letterSpacing: 1,
                   }}
-                />
+                >
+                  Forma de ingresar
+                </Typography>
+                {`{
+  "campo1": "string",
+  "campo2": "integer",
+  "campo3": {
+      "subcampo1": "boolean",
+      "subcampo2": "float"
+  }
+}`}
               </Item>
             </Grid>
           </Grid>
         </Box>
       </Box>
 
-      {/* Values validar */}
+      {/* Values Validator */}
 
       <Box
         sx={{
-          px: 18,
+          px: { xs: 2, md: 18 },
           display: 'flex',
           flexDirection: 'column',
           textAlign: 'justify',
@@ -164,39 +150,31 @@ export const Home = () => {
         <Box sx={{ width: '100%', py: 2 }}>
           <Grid
             container
-            columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+            spacing={2}
             justifyContent="center"
             alignItems="flex-start"
           >
-            <Grid size={4}>
+            <Grid item xs={12} md={6}>
               <Item>
-                <TextField
-                  id="standard-multiline-static"
-                  label="Forma de ingresar"
-                  multiline
-                  rows={8}
-                  defaultValue={`{
-    "campo1": "hola",
-    "campo2": 2,
-    "campo3": {
-        "subcampo1": true,
-        "subcampo2": 5.5
-    }
-}`}
-                  variant="standard"
-                  disabled
-                  fullWidth
-                  InputProps={{
-                    sx: {
-                      fontFamily: 'monospace',
-                      borderRadius: 1,
-                      px: 1,
-                      py: 1,
-                      fontSize: 14,
-                    },
-                    disableUnderline: true,
+                <Typography
+                  variant="subtitle2"
+                  sx={{
+                    mb: 1,
+                    fontWeight: 'bold',
+                    color: 'primary.main',
+                    letterSpacing: 1,
                   }}
-                />
+                >
+                  Forma de ingresar
+                </Typography>
+                {`{
+  "campo1": "hola",
+  "campo2": 2,
+  "campo3": {
+      "subcampo1": true,
+      "subcampo2": 5.5
+  }
+}`}
               </Item>
             </Grid>
           </Grid>

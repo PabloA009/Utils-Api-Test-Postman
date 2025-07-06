@@ -8,9 +8,9 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { useTheme } from '@mui/material/styles';
 import Snackbar from '@mui/material/Snackbar';
 
-export const Schema = ({ mode }) => {
+export const Values = ({ mode }) => {
   const theme = useTheme();
-  const [value, setValue] = React.useState('{\n  "campo": "TipoDeDato"\n}');
+  const [value, setValue] = React.useState('{\n  "campo": "valor"\n}');
   const [result, setResult] = React.useState(null);
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
 
@@ -61,7 +61,7 @@ export const Schema = ({ mode }) => {
         }}
       >
         <Typography variant="h6" gutterBottom>
-          Ingresa el Schema a validar
+          Ingresa el request a validar
         </Typography>
       </Box>
       <Box
