@@ -11,11 +11,14 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import FormatListNumberedRtlIcon from '@mui/icons-material/FormatListNumberedRtl';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import FormatQuoteOutlinedIcon from '@mui/icons-material/FormatQuoteOutlined';
 import FactCheckOutlinedIcon from '@mui/icons-material/FactCheckOutlined';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import IconButton from '@mui/material/IconButton';
 import { Home } from './Pages/Home';
+import { Type } from './Pages/Type';
 import { Schema } from './Pages/Schema';
 import { Values } from './Pages/Values';
 import { purple } from '@mui/material/colors';
@@ -51,7 +54,12 @@ export const App = () => {
     {
       segment: '/',
       title: 'Info',
-      icon: <FactCheckOutlinedIcon />,
+      icon: <InfoOutlinedIcon />,
+    },
+    {
+      segment: '/Type',
+      title: 'Data type',
+      icon: <FormatQuoteOutlinedIcon />,
     },
     {
       segment: '/Schema',
@@ -68,6 +76,7 @@ export const App = () => {
   // Renderiza el contenido según la ruta seleccionada
   let content = null;
   if (route === '/') content = <Home />;
+  else if (route === '/Type') content = <Type mode={mode} />;
   else if (route === '/Schema') content = <Schema mode={mode} />;
   else if (route === '/Values') content = <Values mode={mode} />;
   else

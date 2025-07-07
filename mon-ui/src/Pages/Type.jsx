@@ -7,9 +7,9 @@ import * as React from 'react';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { useTheme } from '@mui/material/styles';
 import Snackbar from '@mui/material/Snackbar';
-import { valueTests } from '../Utils/ValuesValidator';
+import { DataType } from '../Utils/DataTypeConverter';
 
-export const Values = ({ mode }) => {
+export const Type = ({ mode }) => {
   const theme = useTheme();
   const [value, setValue] = React.useState('{\n  "campo": "valor"\n}');
   const [result, setResult] = React.useState(null);
@@ -32,7 +32,7 @@ export const Values = ({ mode }) => {
   // Procesa el JSON al hacer click
   const handleProcess = () => {
     try {
-      let res = valueTests(value);
+      let res = DataType(value);
       setResult(res);
     } catch {
       setResult('JSON inválido');
@@ -62,7 +62,7 @@ export const Values = ({ mode }) => {
         }}
       >
         <Typography variant="h6" gutterBottom>
-          Ingresa la Response a validar
+          Ingresa la Response para convertir
         </Typography>
       </Box>
       <Box
@@ -155,7 +155,7 @@ export const Values = ({ mode }) => {
         open={openSnackbar}
         autoHideDuration={1200}
         onClose={() => setOpenSnackbar(false)}
-        message="¡Ahora solo pegalo en Postman :D!"
+        message="¡Ahora solo pegalo en Schema :D!"
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         ContentProps={{
           sx: {
