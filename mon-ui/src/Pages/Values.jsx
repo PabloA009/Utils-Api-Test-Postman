@@ -7,6 +7,7 @@ import * as React from 'react';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { useTheme } from '@mui/material/styles';
 import Snackbar from '@mui/material/Snackbar';
+import { valueTests } from '../Utils/ValuesValidator';
 
 export const Values = ({ mode }) => {
   const theme = useTheme();
@@ -31,8 +32,11 @@ export const Values = ({ mode }) => {
   // Procesa el JSON al hacer click
   const handleProcess = () => {
     try {
-      const parsed = JSON.parse(value);
-      setResult(JSON.stringify(parsed, null, 2));
+      // const parsed = JSON.parse(value);
+
+      // setResult(JSON.stringify(parsed, null, 2));
+      let res = valueTests(value);
+      setResult(res);
     } catch {
       setResult('JSON inválido');
     }
