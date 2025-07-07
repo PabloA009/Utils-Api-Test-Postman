@@ -155,7 +155,7 @@ export const Schema = ({ mode }) => {
         open={openSnackbar}
         autoHideDuration={1200}
         onClose={() => setOpenSnackbar(false)}
-        message="¡Copiado al portapapeles!"
+        message="Ahora solo pegalo en Postman :D"
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         ContentProps={{
           sx: {

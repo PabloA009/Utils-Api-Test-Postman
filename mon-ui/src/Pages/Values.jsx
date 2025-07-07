@@ -32,9 +32,6 @@ export const Values = ({ mode }) => {
   // Procesa el JSON al hacer click
   const handleProcess = () => {
     try {
-      // const parsed = JSON.parse(value);
-
-      // setResult(JSON.stringify(parsed, null, 2));
       let res = valueTests(value);
       setResult(res);
     } catch {
@@ -158,7 +155,7 @@ export const Values = ({ mode }) => {
         open={openSnackbar}
         autoHideDuration={1200}
         onClose={() => setOpenSnackbar(false)}
-        message="¡Copiado al portapapeles!"
+        message="¡Ahora solo pegalo en Postman :D!"
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         ContentProps={{
           sx: {
