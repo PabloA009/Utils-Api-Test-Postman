@@ -4,5 +4,5 @@ import react from '@vitejs/plugin-react-swc';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  // base: 'https://PabloA009.github.io//Utils-Api-Test-Postman',
+  base: 'https://PabloA009.github.io//Utils-Api-Test-Postman',
 });
