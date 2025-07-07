@@ -110,7 +110,7 @@ export const Type = ({ mode }) => {
           sx={{ mt: 3 }}
           onClick={handleProcess}
         >
-          Generar Tests
+          Generar
         </Button>
         {result && (
           <Paper
