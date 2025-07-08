@@ -55,8 +55,8 @@ const propertiesList = (key, val, cl) => {
   }
 
   pro += cl
-    ? `}},"minItems":0,"type":"array"}`
-    : `}},"minItems":0,"type":"array"},`;
+    ? `}},"minItems":1,"type":"array"}`
+    : `}},"minItems":1,"type":"array"},`;
 
   return pro;
 };

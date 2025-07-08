@@ -8,6 +8,7 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { useTheme } from '@mui/material/styles';
 import Snackbar from '@mui/material/Snackbar';
 import { valSchema } from '../Utils/SchemaValidator';
+import { DataType } from '../Utils/DataTypeConverter';
 
 export const Schema = ({ mode }) => {
   const theme = useTheme();
@@ -32,7 +33,8 @@ export const Schema = ({ mode }) => {
   // Procesa el JSON al hacer click
   const handleProcess = () => {
     try {
-      let res = valSchema(value);
+      let dt = DataType(value);
+      let res = valSchema(dt);
       setResult(res);
     } catch {
       setResult('JSON inválido');
