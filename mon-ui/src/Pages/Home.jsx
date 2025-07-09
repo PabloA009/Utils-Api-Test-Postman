@@ -93,7 +93,7 @@ export const Home = () => {
                     letterSpacing: 1,
                   }}
                 >
-                  Entrada:
+                  Ejemplo de entrada:
                 </Typography>
                 {`{
   "campo": "valor",

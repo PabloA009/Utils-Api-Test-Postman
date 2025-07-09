@@ -12,7 +12,7 @@ import { DataType } from '../Utils/DataTypeConverter';
 
 export const Schema = ({ mode }) => {
   const theme = useTheme();
-  const [value, setValue] = React.useState('{\n  "campo": "TipoDeDato"\n}');
+  const [value, setValue] = React.useState('{\n  "key": "value"\n}');
   const [result, setResult] = React.useState(null);
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
 
@@ -64,7 +64,7 @@ export const Schema = ({ mode }) => {
         }}
       >
         <Typography variant="h6" gutterBottom>
-          Ingresa el Schema a validar
+          Ingresa el JSON a validar
         </Typography>
       </Box>
       <Box
