@@ -15,6 +15,7 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import FactCheckOutlinedIcon from '@mui/icons-material/FactCheckOutlined';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
+import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import { Home } from './Pages/Home';
 import { Schema } from './Pages/Schema';
@@ -22,10 +23,12 @@ import { Values } from './Pages/Values';
 import { purple } from '@mui/material/colors';
 
 const drawerWidth = 220;
+const drawerCollapsedWidth = 56;
 
 export const App = () => {
   const [route, setRoute] = React.useState('/');
   const [mode, setMode] = React.useState('dark');
+  const [drawerExpanded, setDrawerExpanded] = React.useState(true);
 
   const demoTheme = React.useMemo(
     () =>
@@ -85,16 +88,19 @@ export const App = () => {
         <Drawer
           variant="permanent"
           sx={{
-            width: drawerWidth,
+            width: drawerExpanded ? drawerWidth : drawerCollapsedWidth,
             flexShrink: 0,
+            transition: 'width 0.3s ease',
             [`& .MuiDrawer-paper`]: {
-              width: drawerWidth,
+              width: drawerExpanded ? drawerWidth : drawerCollapsedWidth,
               boxSizing: 'border-box',
               bgcolor: 'background.paper',
               borderRight: '1px solid #e0e0e0',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
+              transition: 'width 0.3s ease',
+              overflowX: 'hidden',
             },
           }}
         >
@@ -102,12 +108,32 @@ export const App = () => {
             <Box
               sx={{
                 p: 2,
-                textAlign: 'center',
-                fontWeight: 'bold',
-                fontSize: 22,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: drawerExpanded ? 'space-between' : 'center',
               }}
             >
-              Postman Utils
+              {drawerExpanded && (
+                <Typography
+                  variant="h6"
+                  sx={{
+                    fontWeight: 'bold',
+                    fontSize: 22,
+                  }}
+                >
+                  Postman Utils
+                </Typography>
+              )}
+              <IconButton
+                onClick={() => setDrawerExpanded(!drawerExpanded)}
+                color="inherit"
+                aria-label="toggle navigation"
+                sx={{
+                  ml: drawerExpanded ? 0 : 0,
+                }}
+              >
+                <MenuIcon />
+              </IconButton>
             </Box>
             <List>
               {navigation.map((item) => (
@@ -115,21 +141,44 @@ export const App = () => {
                   <ListItemButton
                     selected={route === item.segment}
                     onClick={() => setRoute(item.segment)}
+                    sx={{
+                      minHeight: 48,
+                      justifyContent: drawerExpanded ? 'initial' : 'center',
+                      px: 2.5,
+                    }}
                   >
-                    <ListItemIcon>{item.icon}</ListItemIcon>
-                    <ListItemText primary={item.title} />
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: drawerExpanded ? 3 : 'auto',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      {item.icon}
+                    </ListItemIcon>
+                    {drawerExpanded && (
+                      <ListItemText
+                        primary={item.title}
+                        sx={{ opacity: drawerExpanded ? 1 : 0 }}
+                      />
+                    )}
                   </ListItemButton>
                 </ListItem>
               ))}
             </List>
           </Box>
-          <Box sx={{ p: 2, textAlign: 'left' }}>
+          <Box sx={{ p: 2, textAlign: 'center' }}>
             <IconButton
               onClick={() =>
                 setMode((prev) => (prev === 'light' ? 'dark' : 'light'))
               }
               color="inherit"
               aria-label="toggle theme"
+              title={
+                drawerExpanded
+                  ? `Cambiar a modo ${mode === 'light' ? 'oscuro' : 'claro'}`
+                  : undefined
+              }
             >
               {mode === 'light' ? <DarkModeIcon /> : <LightModeIcon />}
             </IconButton>

@@ -31,28 +31,11 @@ export const Home = () => {
         }}
       >
         <Typography variant="h4" gutterBottom>
-          ¿Qué puedo hacer?
+          ¿Qué hace?
         </Typography>
         <Typography variant="body1" gutterBottom>
-          Generar los tests para validar el Schema de la response de un API y
-          los tests para validar valores devueltos en la response del API de una
-          forma más rápida.
-        </Typography>
-      </Box>
-      <Box
-        sx={{
-          py: 4,
-          px: 10,
-          display: 'flex',
-          flexDirection: 'column',
-          textAlign: 'justify',
-        }}
-      >
-        <Typography variant="h4" gutterBottom>
-          ¿Cómo funciona?
-        </Typography>
-        <Typography variant="body1" sx={{ px: 4 }}>
-          Por medio de tres funciones generadoras:
+          Genera los tests para validar el Schema de un JSON y los tests para
+          validar valores de un JSON.
         </Typography>
       </Box>
 
@@ -70,9 +53,9 @@ export const Home = () => {
           Schema Validator
         </Typography>
         <Typography variant="body2" gutterBottom sx={{ px: 2 }}>
-          Puedes generar los tests para validar el Schema de la response de un
-          API. Basta con ingresar la response del API a la que desea generar los
-          tets, ejemplo:
+          Puedes generar los tests para validar el Schema de un JSON. Basta con
+          ingresar el JSON del cual quieres generar los tests. Debes ingresar el
+          JSON de la siguiente forma:
         </Typography>
 
         <Box sx={{ width: '100%', py: 2 }}>
@@ -137,9 +120,8 @@ export const Home = () => {
           Values Validator
         </Typography>
         <Typography variant="body2" gutterBottom sx={{ px: 2 }}>
-          Puedes generar los tests para validar los valores que deseas de la
-          response de un API. Debes ingresar la request del API de la siguiente
-          forma:
+          Puedes generar los tests para validar los valores definidos en tu
+          JSON. Debes ingresar el JSON de la siguiente forma:
         </Typography>
 
         <Box sx={{ width: '100%', py: 2 }}>
