@@ -43,22 +43,39 @@ const propertiesDict = (key, val, cl) => {
 };
 
 const propertiesList = (key, val, cl) => {
-  let tm = val.length;
-  let aux = 1;
-  let pro = `"${key}":{"items":{"properties":{`;
-  //   let req = ',"required":[';
-
-  for (let ind of val) {
-    pro += propertiesDict(key, ind, last(tm, aux));
-    // req += requiredSimple(key, last(tm, aux));
-    aux++;
+  if (!val || val.length === 0) {
+    return cl
+      ? `"${key}":{"items":{},"minItems":0,"type":"array"}`
+      : `"${key}":{"items":{},"minItems":0,"type":"array"},`;
   }
 
-  pro += cl
-    ? `}},"minItems":1,"type":"array"}`
-    : `}},"minItems":1,"type":"array"},`;
+  let firstItem = val[0];
 
-  return pro;
+  if (isDict(firstItem)) {
+    let keys = Object.keys(firstItem);
+    let tm = keys.length;
+    let aux = 1;
+    let properties = '';
+    let required = '';
+
+    for (let ky of keys) {
+      let value = firstItem[ky];
+      if (isDict(value)) {
+        properties += propertiesDict(ky, value, last(tm, aux));
+        required += requiredSimple(ky, last(tm, aux));
+      } else {
+        properties += propertiesSimple(ky, 'string', last(tm, aux));
+        required += requiredSimple(ky, last(tm, aux));
+      }
+      aux++;
+    }
+
+    let result = `"${key}":{"items":{"properties":{${properties}},"required":[${required}],"type":"object"},"minItems":1,"type":"array"}`;
+    return cl ? result : result + ',';
+  } else {
+    let result = `"${key}":{"items":{"type":"string"},"minItems":1,"type":"array"}`;
+    return cl ? result : result + ',';
+  }
 };
 
 export const valSchema = (sqm) => {
